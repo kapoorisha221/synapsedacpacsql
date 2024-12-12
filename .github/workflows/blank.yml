@@ -55,7 +55,6 @@ jobs:
           subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
           client-secret: ${{ secrets.CLIENT_SECRET }}
           enable-AzPSSession: true
-          auth-type: SERVICE_PRINCIPAL
           
       - name: Azure SQL Deploy
         uses: Azure/sql-action@v2.2.1
