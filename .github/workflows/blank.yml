@@ -43,7 +43,7 @@ jobs:
         # Downloads Data artifact to dacpac folder
         uses: actions/download-artifact@v4.1.8
         with:
-          name: SQLPool
+          name: SQLDB
 
       
       
