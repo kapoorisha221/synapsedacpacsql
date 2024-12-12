@@ -6,7 +6,9 @@ on:
   pull_request:
     branches: [ "master" ]
   workflow_dispatch:
-
+permissions:
+  id-token: write
+  contents: read
 jobs:
   build:
     runs-on: windows-latest
@@ -44,7 +46,17 @@ jobs:
         uses: actions/download-artifact@v4.1.8
         with:
           name: SQLDB
-
+          
+      - name: OIDC Login to Azure Public Cloud with AzPowershell (enableAzPSSession true)
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.CLIENT_ID }}
+          tenant-id: ${{ secrets.TENANT_ID }}
+          subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
+          client-secret: ${{ secrets.CLIENT_SECRET }}
+          enable-AzPSSession: true
+          auth-type: SERVICE_PRINCIPAL
+          
       - name: Azure SQL Deploy
         uses: Azure/sql-action@v2.2.1
         with:
