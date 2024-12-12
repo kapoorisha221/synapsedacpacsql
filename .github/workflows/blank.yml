@@ -48,7 +48,7 @@ jobs:
           name: SQLDB
           
       - name: OIDC Login to Azure Public Cloud with AzPowershell (enableAzPSSession true)
-        uses: azure/login@v2
+        uses: Azure/login@v2.2.0
         with:
           client-id: ${{ secrets.CLIENT_ID }}
           tenant-id: ${{ secrets.TENANT_ID }}
