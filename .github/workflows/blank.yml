@@ -38,3 +38,12 @@ jobs:
         with:
           name: SQLDB
           path: ${{ github.workspace }}\Database2\bin\Release\
+          
+      - name: Download SQLPool artifact
+        # Downloads Data artifact to dacpac folder
+        uses: actions/download-artifact@v2.0.9
+        with:
+          name: SQLPool
+
+      
+      
